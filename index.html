@@ -585,6 +585,11 @@
 						</div>
 						<button type="submit" class="btn btn-primary btn-block" id="btn-kirim">Kirim Ucapan</button>
 					</form>
+					<div id="guestbook-success" class="guestbook-popup" role="status" aria-live="polite">
+						<strong>Berhasil dikirim</strong>
+						<span>Terima kasih atas ucapan dan doa Anda.</span>
+						<button type="button" class="guestbook-popup-close" aria-label="Tutup">&times;</button>
+					</div>
 				</div>
 			</div>
 
@@ -808,14 +813,15 @@
 		function loadComments() {
 			$.get(scriptURL, function (data) {
 				$("#display-ucapan").empty();
-				for (let i = 0; i < data.length; i++) {
+				const newestFirst = [...data].reverse();
+				for (let i = 0; i < newestFirst.length; i++) {
 					const item = `
                     <div class="list-group-item" style="margin-bottom:10px; border-radius:5px;">
                         <div class="name">
-                            <strong style="font-size: 18px; color: #333;">${data[i].nama}</strong> 
-                            <span class="label ${data[i].keterangan === 'Hadir' ? 'label-success' : 'label-danger'}">${data[i].keterangan}</span>
+							<strong style="font-size: 18px; color: #333;">${newestFirst[i].nama}</strong> 
+							<span class="label ${newestFirst[i].keterangan === 'Hadir' ? 'label-success' : 'label-danger'}">${newestFirst[i].keterangan}</span>
                         </div>
-                        <p style="margin-top: 10px; color: #666; font-style: italic;">"${data[i].ucapan}"</p>
+						<p style="margin-top: 10px; color: #666; font-style: italic;">"${newestFirst[i].ucapan}"</p>
                     </div>
                 `;
 					$("#display-ucapan").append(item);
@@ -839,7 +845,11 @@
 				body: JSON.stringify(payload)
 			})
 				.then(res => {
-					alert('Terima kasih atas ucapannya!');
+					if (!res.ok) {
+						throw new Error('Gagal mengirim data');
+					}
+
+					document.getElementById('guestbook-success').classList.add('is-visible');
 					$('#guestbook-form')[0].reset();
 					$('#btn-kirim').attr('disabled', false).text('Kirim Ucapan');
 					loadComments(); // Refresh daftar
@@ -848,6 +858,10 @@
 					alert('Gagal mengirim. Coba lagi.');
 					$('#btn-kirim').attr('disabled', false).text('Kirim Ucapan');
 				});
+
+		$('#guestbook-success').on('click', '.guestbook-popup-close', function () {
+			$('#guestbook-success').removeClass('is-visible');
+		});
 		});
 
 		// Jalankan saat halaman load

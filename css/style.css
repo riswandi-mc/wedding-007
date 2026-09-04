@@ -30,6 +30,7 @@ body {
   line-height: 1.7;
   color: #828282;
   background: var(--theme-green-soft);
+  overflow-x: hidden;
 }
 
 #page {
@@ -535,7 +536,8 @@ figure {
   padding-top: 100px;
   padding-bottom: 100px;
   background-image: url('../images/background/repeat-background/new.jpeg');
-  background-repeat: repeat;
+  background-repeat: no-repeat;
+  background-position: center center;
   background-size: cover;
 }
 
@@ -571,6 +573,20 @@ figure {
 #fh5co-header .simply-countdown {
   margin-top: 50px;
   margin-bottom: 0 !important;
+}
+
+@media screen and (max-width: 768px) {
+  #fh5co-header {
+    min-height: 100vh;
+    padding: 70px 0 55px;
+    background-position: center center;
+    background-size: cover;
+  }
+
+  #fh5co-header .container,
+  #fh5co-header .row {
+    max-width: 100%;
+  }
 }
 
 #overlay {
@@ -1404,6 +1420,57 @@ form label {
 
   #fh5co-gallery .story-card {
     padding: 34px 24px 24px;
+  }
+}
+
+.guestbook-popup {
+  display: none;
+  position: relative;
+  margin-top: 16px;
+  padding: 16px 44px 16px 18px;
+  color: var(--theme-green-dark);
+  background: var(--theme-green-soft);
+  border-left: 4px solid var(--theme-green);
+  border-radius: 6px;
+  box-shadow: 0 8px 20px rgba(29, 90, 59, 0.1);
+}
+
+.guestbook-popup.is-visible {
+  display: block;
+  animation: guestbook-popup-in 0.3s ease-out;
+}
+
+.guestbook-popup strong,
+.guestbook-popup span {
+  display: block;
+}
+
+.guestbook-popup span {
+  margin-top: 2px;
+  color: #5d5d5d;
+}
+
+.guestbook-popup-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  padding: 0 6px;
+  color: var(--theme-green-dark);
+  background: transparent;
+  border: 0;
+  font-size: 24px;
+  line-height: 1;
+}
+
+@keyframes guestbook-popup-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -2694,6 +2761,7 @@ form label {
 
 .flower-3-top {
   height: 300px;
+  max-width: 100vw;
   top: 82px;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -2702,6 +2770,7 @@ form label {
 
 .flower-4-bottom {
   height: 300px;
+  max-width: 100vw;
   bottom: 50px;
   left: 50%;
   transform: translate(-50%, 50%);
@@ -2721,8 +2790,9 @@ form label {
   }
 
   .flower-2-right {
-    right: -20px;
+    right: 0;
     height: 200px;
+    max-width: 100vw;
   }
 
   .flower-3-top {
