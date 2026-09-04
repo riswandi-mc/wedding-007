@@ -84,79 +84,6 @@
 	<script src="js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
-	<style>
-		@media screen and (max-width: 768px) {
-
-			/* Memaksa semua elemen yang punya background-image agar posisinya center */
-			[style*="background-image"] {
-				background-position: center center !important;
-				background-size: cover !important;
-				background-attachment: scroll !important;
-				/* Penting untuk iOS/Safari */
-			}
-
-			/* Khusus untuk ID utama agar tidak meleset */
-			#fh5co-header,
-			#fh5co-started,
-			.fh5co-cover,
-			.fh5co-bg {
-				background-position: center center !important;
-				background-size: cover !important;
-			}
-
-			/* Menyesuaikan tinggi header di HP agar konten tidak terpotong */
-			.fh5co-cover-sm {
-				height: 600px;
-				/* Anda bisa sesuaikan angka ini */
-			}
-		}
-	</style>
-</head>
-
-<body>
-
-	<div class="fh5co-loader"></div>
-
-	<!--<div class="container">-->
-	<div id="page">
-		<!--
-		<nav class="fh5co-nav" role="navigation">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-2">
-						<div id="fh5co-logo"><a href="#fh5co-header">Hambali &amp; Ranti</a></div>
-					</div>
-					<div class="col-xs-10 text-right menu-1">
-						<ul>
-							<li class="active"><a href="#fh5co-header">Home</a></li>
-							<li><a href="#fh5co-couple">Couple</a></li>
-							<li><a href="#fh5co-event">Event</a></li>
-							<li><a href="#fh5co-gallery">Gallery</a></li>
-							<li><a href="#fh5co-testimonial">Ucapan</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</nav>
-		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle fh5co-nav-white"><i></i></a>
-		-->
-
-		<!--<header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url(images/img_bg_2.jpg);" data-stellar-background-ratio="0.5">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 text-center">
-                    <div class="display-t">
-                        <div class="display-tc animate-box" data-animate-effect="fadeIn">
-                            <h1>Joefrey &amp; Sheila</h1>
-                            <h2>We Are Getting Married</h2>
-                            <div class="simply-countdown simply-countdown-one"></div>
-                            <p><a href="#" class="btn btn-default btn-sm">Save the date</a></p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </header>-->
@@ -373,15 +300,43 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
-						<h2>Galeri Foto</h2>
-						<h3 style="color: #8abf9b">Prewed Moment</h3>
-						<p style="color: #000000">Swipe &harr;</p>
+						<h2>Cerita Kami</h2>
+						<h3 style="color: #8abf9b">OUR STORY</h3>
 					</div>
 				</div>
-				<div class="row row-bottom-padded-md animate-box">
+				<div class="row animate-box">
 					<div class="col-md-12">
-						<div id="inline-gallery-container" class="inline-gallery-container"
-							style="position: relative; height: 500px"></div>
+						<div class="story-grid">
+							<article class="story-card">
+								<span class="story-number">01</span>
+								<h3>A Little Beginning</h3>
+								<p>Semuanya berawal dari sebuah perkenalan sederhana di dunia maya.</p>
+								<p>Awalnya cuma ngobrol biasa, saling bertukar cerita, tanpa pernah terpikir kalau dari percakapan kecil itu, akan ada cerita panjang yang kami jalani bersama.</p>
+							</article>
+
+							<article class="story-card">
+								<span class="story-number">02</span>
+								<h3>Growing Closer</h3>
+								<p>Kami pun nggak pernah punya tanggal khusus untuk menyebut kapan semuanya dimulai.</p>
+								<p>Nggak ada momen “resmi jadian”, kami hanya menjalani semuanya perlahan.</p>
+								<p>Semakin sering ngobrol, semakin banyak cerita yang dibagi, dan tanpa sadar kami mulai merasa nyaman satu sama lain.</p>
+							</article>
+
+							<article class="story-card">
+								<span class="story-number">03</span>
+								<h3>A Promise</h3>
+								<p>Seiring berjalannya waktu, kami mulai yakin bahwa pertemuan ini bukan sekadar kebetulan.</p>
+								<p>Dengan doa, keyakinan, dan restu dari keluarga, kami memutuskan untuk melangkah lebih jauh dan membawa hubungan ini ke jenjang yang lebih serius. 💍</p>
+							</article>
+
+							<article class="story-card">
+								<span class="story-number">04</span>
+								<h3>Forever Begins</h3>
+								<p>Dan sekarang, tibalah waktunya untuk memulai cerita yang baru.</p>
+								<p>Bukan lagi tentang aku dan kamu, tapi tentang perjalanan kita, saling menemani, saling menguatkan, dan tumbuh bersama.</p>
+								<p>Semoga langkah ini menjadi awal dari banyak cerita indah yang akan kami jalani bersama.</p>
+							</article>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -994,6 +949,7 @@
 
 	<script type="text/javascript">
 		const lgContainer = document.getElementById('inline-gallery-container');
+		if (lgContainer) {
 		const inlineGallery = lightGallery(lgContainer, {
 			container: lgContainer,
 			dynamic: true,
@@ -1111,6 +1067,7 @@
 
 		// Since we are using dynamic mode, we need to programmatically open lightGallery
 		inlineGallery.openGallery();
+		}
 	</script>
 
 	<script>
@@ -1125,9 +1082,10 @@
 	<script>
 		//Nama tamu
 		const urlParams = new URLSearchParams(window.location.search);
-		const namaTamu = urlParams.get('to');
-		if (namaTamu) {
-			document.querySelector('.guest-name').innerText = namaTamu;
+		const nama = urlParams.get('nama');
+		const namaContainer = document.querySelector('.guest-name');
+		if (nama && namaContainer) {
+			namaContainer.innerText = nama;
 		}
 	</script>
 
